@@ -34,7 +34,7 @@
                 }
 
                 var params = Object.keys(attrs).map(function (attr) {
-                    if (attr === 'markers' && markerStrings) {
+                    if (attr === 'static-markers' && markerStrings) {
                         return Object.keys(markerStrings).map(function (key) {
                             return 'markers=' + encodeURIComponent(markerStrings[key]);
                         }).join('&');
@@ -68,7 +68,7 @@
 
                 link: function postLink(scope, element, attrs, ctrl) {
                     var el = element[0];
-                    var markers = $parse(attrs.markers)(scope);
+                    var markers = $parse(attrs.static-markers)(scope);
 
                     if (!attrs.sensor) {
                         throw new Error('The `sensor` attribute is required.');
